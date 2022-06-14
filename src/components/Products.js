@@ -1,9 +1,6 @@
 import React from 'react'
 
 class List extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const { products, filterText } = this.props
@@ -23,7 +20,6 @@ class List extends React.Component {
         })}
       </ul>
     )
-
   }
 }
 
@@ -33,9 +29,7 @@ class SearchBar extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange = (e) => {
-    this.props.onInputChange(e.target.value)
-  }
+  handleChange = (e) => this.props.onInputChange(e.target.value)
 
   render() {
     return(
@@ -45,7 +39,6 @@ class SearchBar extends React.Component {
     )
   }
 }
-
 
 export class ProductsComponent extends React.Component {
 
@@ -67,9 +60,7 @@ export class ProductsComponent extends React.Component {
       });
   }
 
-  handleChange = (inputText) => {
-    this.setState({inputText})
-  }
+  handleChange = (inputText) => this.setState({inputText})
 
   render() {
     return (
