@@ -10,10 +10,10 @@ class List extends React.Component {
     const list = []
 
     products.forEach((product) => {
-      if (product.name.indexOf(filterText) === -1) {
+      if (product.title.indexOf(filterText) === -1) {
         return
       }
-      list.push(product.name)
+      list.push(product.title)
     })
 
     return(
@@ -47,15 +47,24 @@ class SearchBar extends React.Component {
 }
 
 
-
 export class ProductsComponent extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      inputText: "hey"
+      inputText: "",
+      products: []
     }
     this.handleChange = this.handleChange.bind(this)
+  }
+
+  componentDidMount() {
+    fetch('https://dummyjson.com/products')
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        this.setState(data)
+      });
   }
 
   handleChange = (inputText) => {
@@ -66,7 +75,7 @@ export class ProductsComponent extends React.Component {
     return (
       <React.Fragment>
         <SearchBar onInputChange={this.handleChange} filterText={this.state.inputText}/>
-        <List filterText={this.state.inputText} products = {this.props.products}/>
+        <List filterText={this.state.inputText} products = {this.state.products}/>
       </React.Fragment>
     )
   }
