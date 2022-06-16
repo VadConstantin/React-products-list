@@ -4,13 +4,19 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { FilterableProductTable } from './App';
 import { ProductsComponent } from './components/Products'
+import { App } from './components/CustomHooks'
+import { List } from './components/demo'
+import  { StateObject } from './components/Ref'
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ProductsComponent />
+    {/* <ProductsComponent /> */}
+    {/* <App /> */}
+    <StateObject />
+    {/* <List /> */}
   </React.StrictMode>
 );
 
