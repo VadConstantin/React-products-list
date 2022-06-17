@@ -7,7 +7,7 @@ import { ProductsComponent } from './components/Products'
 import { App } from './components/CustomHooks'
 import { List } from './components/demo'
 import  { StateObject } from './components/Ref'
-
+import { Example} from './components/Ref'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,6 +16,7 @@ root.render(
     {/* <ProductsComponent /> */}
     {/* <App /> */}
     <StateObject />
+    <Example />
     {/* <List /> */}
   </React.StrictMode>
 );

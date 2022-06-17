@@ -1,36 +1,57 @@
-import React, { useState, useEffect, useRef, useMemo, useCallback, useReducer } from 'react'
+import React, { useReducer, useState, useCallback } from 'react'
 
-
+// useReducer
 
 export const StateObject = () => {
 
-  const initialState = { count: 0 }
+   const initialValue = {count: 0}
 
   const reducer = (state, action) => {
-    switch (action.type) {
+    switch(action.type) {
       case "increment":
-        return { count: state.count + 1 }
+        return {count: state.count + 1}
       case "decrement":
-        if (state.count <= 0) {
-          return state
-        }
-        return { count: state.count - 1 }
-      case "reinitialiser":
-        return { count: 0 }
+        return {count: state.count - 1}
       default:
-        throw new Error("i dont know this case")
+        throw new Error("i dont know this action")
     }
   }
 
-  const [state, dispatch ] = useReducer(reducer, initialState)
+  const [value, dispatch] = useReducer(reducer, initialValue)
 
   return(
     <div>
-      <p>Nombre d'articles : {state.count} </p>
-      <button onClick={() => dispatch({type:"increment"})}>Ajouter un article</button>
-      <button onClick={() => dispatch({type: "decrement"})}> Retirer un article</button>
-      <button onClick={() => dispatch({type: "reinitialiser"})}> Vider mon panier </button>
+      <p>Compteur : {value.count}</p>
+      <button onClick={() => dispatch({type: "increment"})}>Incrementer</button>
+      <button onClick={() => dispatch({ type: "decrement" })}>decrementer</button>
 
+    </div>
+  )
+}
+
+// useState
+
+export const Example = () => {
+
+  const [ value, setValue ] = useState({count: 0})
+
+  const handleClickIncrement = useCallback(() => {
+    console.log("increment")
+    setValue((prev) => {
+      return {count: prev.count + 1}})
+  }, [])
+
+  const handleClickDecrement = useCallback(() => {
+    console.log("decrement")
+    setValue({count: value.count - 1})
+  }, )
+
+  return(
+    <div>
+      <br></br>
+      <p>Compteur 2 : {value.count} </p>
+      <button onClick={handleClickIncrement}>Incrementer </button>
+      <button onClick={handleClickDecrement}>Décrémenter </button>
     </div>
   )
 }
