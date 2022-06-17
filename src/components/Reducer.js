@@ -4,29 +4,29 @@ import React, { useReducer, useState, useCallback } from 'react'
 
 export const StateObject = () => {
 
-   const initialValue = {count: 0}
+  const initialState = {count: 2}
 
-  const reducer = (state, action) => {
+  const reducer = (state, action ) => {
     switch(action.type) {
-      case "increment":
+      case 'increment':
         return {count: state.count + 1}
-      case "decrement":
+      case 'decrement':
         if (state.count <= 0) {
           return state
         }
         return {count: state.count - 1}
       default:
-        throw new Error("i dont know this action")
+        throw new Error("I dont know this command")
     }
   }
 
-  const [value, dispatch] = useReducer(reducer, initialValue)
+  const [object, dispatch] = useReducer(reducer, initialState)
 
   return(
     <div>
-      <p>Compteur : {value.count}</p>
-      <button onClick={() => dispatch({type: "increment"})}>Incrementer</button>
-      <button onClick={() => dispatch({ type: "decrement" })}>decrementer</button>
+      <p>Compteur : {object.count}</p>
+      <button onClick={() => dispatch({type: "increment"})}>Increment</button>
+      <button onClick={() => dispatch({ type: "decrement" })}>Decrement</button>
 
     </div>
   )

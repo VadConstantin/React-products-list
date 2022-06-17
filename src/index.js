@@ -6,8 +6,8 @@ import { FilterableProductTable } from './App';
 import { ProductsComponent } from './components/Products'
 import { App } from './components/CustomHooks'
 import { List } from './components/demo'
-import  { StateObject } from './components/Ref'
-import { Example} from './components/Ref'
+import  { StateObject } from './components/Reducer'
+import { Example} from './components/Reducer'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
