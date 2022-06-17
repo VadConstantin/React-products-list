@@ -11,6 +11,9 @@ export const StateObject = () => {
       case "increment":
         return {count: state.count + 1}
       case "decrement":
+        if (state.count <= 0) {
+          return state
+        }
         return {count: state.count - 1}
       default:
         throw new Error("i dont know this action")
@@ -35,21 +38,22 @@ export const Example = () => {
 
   const [ value, setValue ] = useState({count: 0})
 
-  const handleClickIncrement = useCallback(() => {
-    console.log("increment")
+  const handleClickIncrement = () => {
     setValue((prev) => {
       return {count: prev.count + 1}})
-  }, [])
+  }
 
-  const handleClickDecrement = useCallback(() => {
-    console.log("decrement")
+  const handleClickDecrement = () => {
+    if (value.count <= 0) {
+      setValue({count: 0})
+    } else
     setValue({count: value.count - 1})
-  }, )
+  }
 
   return(
     <div>
       <br></br>
-      <p>Compteur 2 : {value.count} </p>
+      <p>Compteur : {value.count} </p>
       <button onClick={handleClickIncrement}>Incrementer </button>
       <button onClick={handleClickDecrement}>Décrémenter </button>
     </div>
